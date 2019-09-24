@@ -1,0 +1,63 @@
+{
+  "name": "test-app-you-are-looking-for",
+  "version": "0.0.1",
+  "description": "just another test app",
+  "main": ".dist/index.html",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "npx parcel serve %npm_package_source% -d ./.dist --open",
+    "build": "npx parcel build %npm_package_source% -d ./.dist",
+    "ts": "tsc --noEmit",
+    "ts:w": "npm run ts -- --watch",
+    "test": "jest --passWithNoTests",
+    "test:w": "jest --watch",
+    "test:s": "jest --onlyChanged",
+    "lint": "eslint ./src/**/*.{ts,tsx}",
+    "lint:f": "eslint --debug ./src/**/*.{ts,tsx} --fix",
+    "postinstall": "rm -rf node_modules/@types/react-native"
+  },
+  "keywords": [
+    "parcel",
+    "react",
+    "typescript",
+    "styled-components"
+  ],
+  "author": "evergosu <evergosu@gmail.com> (https://evergosu.dev)",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.6.0",
+    "@types/node": "^12.7.5",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "@types/styled-components": "^4.1.19",
+    "@typescript-eslint/eslint-plugin": "^2.3.1",
+    "@typescript-eslint/parser": "^2.3.1",
+    "babel-plugin-styled-components": "^1.10.6",
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.17.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^2.0.1",
+    "jest": "^24.9.0",
+    "parcel-bundler": "^1.12.3",
+    "prettier": "^1.18.2",
+    "typescript": "^3.6.3"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.6.2",
+    "react": "^16.9.0",
+    "react-dom": "npm:@hot-loader/react-dom@^16.9.0",
+    "react-hot-loader": "^4.12.14",
+    "styled-components": "^5.0.0-beta.8"
+  }
+}
