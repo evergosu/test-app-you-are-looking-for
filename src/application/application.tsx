@@ -1,6 +1,8 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import styled, { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
+
+import Today from './today/today';
 
 const ApplicationStyles = createGlobalStyle`
   @import url("https://fonts.googleapis.com/css?family=Saira+Semi+Condensed");
@@ -12,23 +14,11 @@ const ApplicationStyles = createGlobalStyle`
   }
 `;
 
-const Content = styled.div`
-  height: 100vh;
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-
-  color: #fff;
-  font-size: 100px;
-  background-color: #194f2b;
-`;
-
 const Application: React.FC = () => {
   return (
     <>
       <ApplicationStyles />
-      <Content>Moscow weather</Content>
+      <Today />
     </>
   );
 };
