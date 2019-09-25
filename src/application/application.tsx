@@ -1,8 +1,10 @@
 import React from 'react';
-import { hot } from 'react-hot-loader';
+import { hot, setConfig } from 'react-hot-loader';
 import { createGlobalStyle } from 'styled-components';
 
 import Today from './today/today';
+
+setConfig({ reloadHooks: false });
 
 const ApplicationStyles = createGlobalStyle`
   @import url("https://fonts.googleapis.com/css?family=Saira+Semi+Condensed");
