@@ -6,20 +6,34 @@ import {
   HashRouter as Router,
 } from 'react-router-dom';
 
-import Today from './today/today';
 import Week from './week/week';
+import Today from './today/today';
+
+import useLocationInfo from '../../hooks/use-location-info';
 
 const Weather: React.FC = () => {
+  const [isLoading, hasError, cityName = 'Moscow', cityId] = useLocationInfo(
+    'moscow',
+  );
+
+  if (isLoading || !cityId) {
+    return <div>Trying to find your city</div>;
+  }
+
+  if (hasError) {
+    return <div>Oops, there is an error</div>;
+  }
+
   return (
     <Router>
       <Switch>
-        <Redirect exact path="/" to="/today" />
         <Route path="/today">
-          <Today />
+          <Today cityName={cityName} cityId={cityId} />
         </Route>
         <Route path="/week">
           <Week />
         </Route>
+        <Redirect to="/today" />
       </Switch>
     </Router>
   );

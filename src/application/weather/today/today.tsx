@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import useLocationInfo from '../../../hooks/use-location-info';
-
 const Wrapper = styled.div`
   height: 100vh;
   display: flex;
@@ -16,24 +14,21 @@ const Wrapper = styled.div`
   background-color: #194f2b;
 `;
 
-const Today: React.FC = () => {
-  const [isLoading, hasError, cityName = 'Moscow'] = useLocationInfo('moscow');
+type Props = {
+  cityId: number;
+  cityName: string;
+};
 
-  if (isLoading) {
-    return <div>This is loader</div>;
-  }
-
-  if (hasError) {
-    return <div>Oops, there is an error</div>;
-  }
-
+const Today: React.FC<Props> = ({ cityName, cityId }) => {
   return (
     <Wrapper>
       <div>Today</div>
       <div>Icon</div>
       <div>Temperature</div>
       <div>Time</div>
-      <div>{cityName}</div>
+      <div>
+        {cityName} {cityId}
+      </div>
     </Wrapper>
   );
 };
