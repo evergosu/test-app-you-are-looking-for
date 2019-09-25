@@ -2,7 +2,7 @@ import React from 'react';
 import { hot, setConfig } from 'react-hot-loader';
 import { createGlobalStyle } from 'styled-components';
 
-import Today from './today/today';
+import Weather from './weather/weather';
 
 setConfig({ reloadHooks: false });
 
@@ -20,7 +20,7 @@ const Application: React.FC = () => {
   return (
     <>
       <ApplicationStyles />
-      <Today />
+      <Weather />
     </>
   );
 };
