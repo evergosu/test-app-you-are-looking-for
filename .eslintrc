@@ -32,6 +32,7 @@
         "semi": true
       }
     ],
+    "react/prop-types": "off",
     "react/jsx-filename-extension": [
       "error",
       {
@@ -42,12 +43,14 @@
     ],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-use-before-define": [
       "error",
       {
         "functions": false
       }
     ],
+    "promise/always-return": "off",
     "no-unused-vars": [
       "error",
       {
