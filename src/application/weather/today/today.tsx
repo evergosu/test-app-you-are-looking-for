@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-import fetchTodayWeather from '../../../api/fetch-today-weather';
+import useTodayWeather from '../../../hooks/use-today-weather';
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -50,41 +50,5 @@ const Today: React.FC<Props> = ({ cityName, cityId }) => {
     </Wrapper>
   );
 };
-
-type LocationWeather = [boolean, boolean, string?, number?, string?];
-
-function useTodayWeather(locationId: number): LocationWeather {
-  const [date, setDate] = useState<string>();
-
-  const [temperature, setTemperature] = useState<number>();
-
-  const [weatherState, setWeatherState] = useState<string>();
-
-  const [hasError, setHasError] = useState(false);
-
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    (async () => {
-      setIsLoading(true);
-
-      try {
-        const [w, t, d] = await fetchTodayWeather(locationId);
-
-        setDate(d);
-
-        setTemperature(t);
-
-        setWeatherState(w);
-      } catch (error) {
-        setHasError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    })();
-  }, [locationId]);
-
-  return [isLoading, hasError, weatherState, temperature, date];
-}
 
 export default Today;
