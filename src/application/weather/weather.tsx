@@ -39,9 +39,7 @@ const Weather: React.FC = () => {
             <Route path="/today">
               {cityId && <Today cityName={cityName} cityId={cityId} />}
             </Route>
-            <Route path="/week">
-              <Week />
-            </Route>
+            <Route path="/week">{cityId && <Week cityId={cityId} />}</Route>
             <Redirect to="/today" />
           </Switch>
         </Spinner>

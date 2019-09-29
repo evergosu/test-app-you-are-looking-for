@@ -1,9 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import SingleDay from './single-day/single-day';
+import Spinner from '../../../components/spinner/spinner';
+import ErrorMessage from '../../../components/error-message/error-message';
+
+import useWeekWeather from '../../../hooks/use-week-weather';
+
 const Wrapper = styled.div`
   height: 50%;
   display: flex;
+  margin-top: 5em;
   text-align: center;
   align-items: center;
   flex-direction: column;
@@ -13,11 +20,32 @@ const Wrapper = styled.div`
   background-color: #f6fbfe;
 `;
 
-const Week: React.FC = () => {
+type Props = {
+  cityId: number;
+};
+
+const Week: React.FC<Props> = ({ cityId }) => {
+  const [isLoading, hasError, data] = useWeekWeather(cityId);
+
+  if (hasError) {
+    return <ErrorMessage />;
+  }
+
   return (
-    <Wrapper>
-      <div>Work in progress</div>
-    </Wrapper>
+    <Spinner isLoading={isLoading}>
+      <Wrapper>
+        {data &&
+          data.map(({ minTemp, maxTemp, weatherState, date }) => (
+            <SingleDay
+              key={date}
+              date={date}
+              minTemp={minTemp}
+              maxTemp={maxTemp}
+              weatherState={weatherState}
+            />
+          ))}
+      </Wrapper>
+    </Spinner>
   );
 };
 
