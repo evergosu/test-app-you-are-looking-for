@@ -9,11 +9,26 @@ const Wrapper = styled.div`
   text-align: center;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
 
+  color: #232323;
+  background-color: #f6fbfe;
+`;
+
+const Tab = styled.div`
   color: #fff;
-  font-size: 100px;
-  background-color: #194f2b;
+  border-radius: 10em;
+  padding: 0.25em 0.5em;
+  background-color: #949ea0;
+`;
+
+const Temperature = styled.div`
+  font-size: 30px;
+`;
+
+const Location = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 type Props = {
@@ -22,17 +37,7 @@ type Props = {
 };
 
 const Today: React.FC<Props> = ({ cityName, cityId }) => {
-  const [
-    isLoading,
-    hasError,
-    weatherState,
-    temperature,
-    date,
-  ] = useTodayWeather(cityId);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  const [, hasError, weatherState, temperature, date] = useTodayWeather(cityId);
 
   if (hasError) {
     return <div>Oops, there is an error</div>;
@@ -40,13 +45,15 @@ const Today: React.FC<Props> = ({ cityName, cityId }) => {
 
   return (
     <Wrapper>
-      <div>Today</div>
+      <Tab>Today</Tab>
       <div>{weatherState}</div>
-      <div>{`${temperature || '?'}\u00b0C`}</div>
-      <div>{date}</div>
-      <div>
-        {cityName} {cityId}
-      </div>
+      <Temperature>{`${temperature || '?'} \u00b0C`}</Temperature>
+      <Location>
+        <span>{date}</span>
+        <span>
+          {cityName} {cityId}
+        </span>
+      </Location>
     </Wrapper>
   );
 };
