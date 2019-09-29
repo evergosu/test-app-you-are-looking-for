@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Spinner from '../../../components/spinner/spinner';
+import ErrorMessage from '../../../components/error-message/error-message';
+
 import useTodayWeather from '../../../hooks/use-today-weather';
 
 const Wrapper = styled.div`
@@ -11,9 +13,7 @@ const Wrapper = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
-
   color: #232323;
-  background-color: #f6fbfe;
 `;
 
 const Temperature = styled.div`
@@ -40,7 +40,7 @@ const Today: React.FC<Props> = ({ cityName, cityId }) => {
   ] = useTodayWeather(cityId);
 
   if (hasError) {
-    return <div>Oops, there is an error</div>;
+    return <ErrorMessage />;
   }
 
   return (

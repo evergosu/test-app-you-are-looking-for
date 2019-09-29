@@ -8,8 +8,8 @@ const Tab = styled(Link)`
   color: #232323;
   border-radius: 10em;
   padding: 0.25em 0.5em;
-  background-color: #f6fbfe;
   text-decoration: none;
+  background-color: #f6fbfe;
 
   &.active {
     color: #fff;

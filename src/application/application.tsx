@@ -10,6 +10,7 @@ const ApplicationStyles = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
+    background-color: #f6fbfe;
     font-family: 'Saira Semi Condensed', sans-serif;
   }
 `;
