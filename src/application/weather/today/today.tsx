@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import useTodayWeather from '../../../hooks/use-today-weather';
 
 const Wrapper = styled.div`
-  height: 100vh;
+  height: 50%;
   display: flex;
   text-align: center;
   align-items: center;
@@ -13,13 +13,6 @@ const Wrapper = styled.div`
 
   color: #232323;
   background-color: #f6fbfe;
-`;
-
-const Tab = styled.div`
-  color: #fff;
-  border-radius: 10em;
-  padding: 0.25em 0.5em;
-  background-color: #949ea0;
 `;
 
 const Temperature = styled.div`
@@ -45,7 +38,6 @@ const Today: React.FC<Props> = ({ cityName, cityId }) => {
 
   return (
     <Wrapper>
-      <Tab>Today</Tab>
       <div>{weatherState}</div>
       <Temperature>{`${temperature || '?'} \u00b0C`}</Temperature>
       <Location>

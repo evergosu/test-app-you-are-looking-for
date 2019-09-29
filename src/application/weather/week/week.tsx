@@ -2,16 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  height: 100vh;
+  height: 50%;
   display: flex;
   text-align: center;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
 
-  color: #fff;
-  font-size: 100px;
-  background-color: #194f2b;
+  color: #232323;
+  background-color: #f6fbfe;
 `;
 
 const Week: React.FC = () => {
