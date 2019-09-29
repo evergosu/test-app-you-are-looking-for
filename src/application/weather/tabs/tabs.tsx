@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
 
 const Tab = styled(Link)`
+  cursor: pointer;
+  margin-top: 5em;
   color: #232323;
   border-radius: 10em;
   padding: 0.25em 0.5em;

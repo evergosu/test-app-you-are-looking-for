@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Spinner from '../../../components/spinner/spinner';
 import useTodayWeather from '../../../hooks/use-today-weather';
 
 const Wrapper = styled.div`
-  height: 50%;
+  height: 100%;
   display: flex;
   text-align: center;
   align-items: center;
@@ -30,23 +31,34 @@ type Props = {
 };
 
 const Today: React.FC<Props> = ({ cityName, cityId }) => {
-  const [, hasError, weatherState, temperature, date] = useTodayWeather(cityId);
+  const [
+    isLoading,
+    hasError,
+    weatherState = 'c',
+    temperature = 0,
+    date,
+  ] = useTodayWeather(cityId);
 
   if (hasError) {
     return <div>Oops, there is an error</div>;
   }
 
   return (
-    <Wrapper>
-      <div>{weatherState}</div>
-      <Temperature>{`${temperature || '?'} \u00b0C`}</Temperature>
-      <Location>
-        <span>{date}</span>
-        <span>
-          {cityName} {cityId}
-        </span>
-      </Location>
-    </Wrapper>
+    <Spinner isLoading={isLoading}>
+      <Wrapper>
+        <img
+          width="150px"
+          height="150px"
+          alt="Current weather icon"
+          src={`https://www.metaweather.com/static/img/weather/${weatherState}.svg`}
+        />
+        <Temperature>{`${temperature}\u00b0C`}</Temperature>
+        <Location>
+          <span>{date}</span>
+          <span>{cityName}</span>
+        </Location>
+      </Wrapper>
+    </Spinner>
   );
 };
 
