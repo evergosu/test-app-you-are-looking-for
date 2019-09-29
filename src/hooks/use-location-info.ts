@@ -11,12 +11,10 @@ export default function useLocationInfo(location: string): LocationInfo {
 
   const [hasError, setHasError] = useState(false);
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
-      setIsLoading(true);
-
       try {
         const [{ title, woeid }] = await fetchLocationInfo(location);
 

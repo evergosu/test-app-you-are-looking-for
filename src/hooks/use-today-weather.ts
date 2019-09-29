@@ -13,12 +13,10 @@ export default function useTodayWeather(locationId: number): LocationWeather {
 
   const [hasError, setHasError] = useState(false);
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
-      setIsLoading(true);
-
       try {
         const [w, t, d] = await fetchTodayWeather(locationId);
 
