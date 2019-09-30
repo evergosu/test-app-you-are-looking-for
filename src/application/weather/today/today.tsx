@@ -6,23 +6,38 @@ import ErrorMessage from '../../../components/error-message/error-message';
 
 import useTodayWeather from '../../../hooks/use-today-weather';
 
-const Wrapper = styled.div`
+const Info = styled.div`
   height: 100%;
   display: flex;
   text-align: center;
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
-  color: #232323;
+  color: ${p => p.theme.colors.blackIsh};
 `;
 
 const Temperature = styled.div`
-  font-size: 30px;
+  font-size: 2em;
+
+  @media (min-width: ${p => p.theme.media.phone}) {
+    font-size: 3em;
+  }
 `;
 
 const Location = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const Image = styled.img`
+  width: 10em;
+  height: 10em;
+  margin-top: 2em;
+
+  @media (min-width: ${p => p.theme.media.phone}) {
+    width: 15em;
+    height: 15em;
+  }
 `;
 
 type Props = {
@@ -34,7 +49,7 @@ const Today: React.FC<Props> = ({ cityName, cityId }) => {
   const [
     isLoading,
     hasError,
-    weatherState = 'c',
+    weatherState = 'lc',
     temperature = 0,
     date,
   ] = useTodayWeather(cityId);
@@ -45,10 +60,8 @@ const Today: React.FC<Props> = ({ cityName, cityId }) => {
 
   return (
     <Spinner isLoading={isLoading}>
-      <Wrapper>
-        <img
-          width="150px"
-          height="150px"
+      <Info>
+        <Image
           alt="Current weather icon"
           src={`https://www.metaweather.com/static/img/weather/${weatherState}.svg`}
         />
@@ -57,7 +70,7 @@ const Today: React.FC<Props> = ({ cityName, cityId }) => {
           <span>{date}</span>
           <span>{cityName}</span>
         </Location>
-      </Wrapper>
+      </Info>
     </Spinner>
   );
 };

@@ -8,16 +8,14 @@ import ErrorMessage from '../../../components/error-message/error-message';
 import useWeekWeather from '../../../hooks/use-week-weather';
 
 const Wrapper = styled.div`
-  height: 50%;
+  height: 100%;
   display: flex;
-  margin-top: 5em;
-  text-align: center;
-  align-items: center;
   flex-direction: column;
-  justify-content: space-around;
+  color: ${p => p.theme.colors.blackIsh};
 
-  color: #232323;
-  background-color: #f6fbfe;
+  > div {
+    flex: 1;
+  }
 `;
 
 type Props = {

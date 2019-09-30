@@ -4,16 +4,20 @@ import { Link, useLocation } from 'react-router-dom';
 
 const Tab = styled(Link)`
   cursor: pointer;
-  margin-top: 5em;
-  color: #232323;
+  margin-top: 2em;
+  margin-bottom: 2em;
   border-radius: 10em;
   padding: 0.25em 0.5em;
   text-decoration: none;
-  background-color: #f6fbfe;
+  color: ${p => p.theme.colors.blackIsh};
 
   &.active {
     color: #fff;
-    background-color: #949ea0;
+    background-color: ${p => p.theme.colors.darkGrey};
+  }
+
+  @media (min-width: ${p => p.theme.media.phone}) {
+    font-size: 2em;
   }
 `;
 

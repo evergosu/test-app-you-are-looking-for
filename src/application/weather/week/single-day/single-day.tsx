@@ -1,18 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
-  width: 80%;
+const Row = styled.div`
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: space-around;
-  color: #232323;
+  color: ${p => p.theme.colors.blackIsh};
 `;
 
 const Dates = styled.div`
-  text-align: left;
   flex-grow: 1;
+  text-align: left;
+  padding-left: 2em;
+
+  @media (min-width: ${p => p.theme.media.phone}) {
+    flex-grow: 0.2;
+  }
 
   p {
     margin: 0;
@@ -25,6 +30,7 @@ const Dates = styled.div`
 
 const Weather = styled.div`
   display: flex;
+  padding-right: 2em;
   align-items: center;
 
   img {
@@ -32,10 +38,21 @@ const Weather = styled.div`
   }
 `;
 
+const Image = styled.img`
+  width: 2em;
+  height: 2em;
+
+  @media (min-width: ${p => p.theme.media.phone}) {
+    width: 3em;
+    height: 3em;
+  }
+`;
+
 type Props = {
   date: string;
   minTemp: number;
   maxTemp: number;
+  className?: string;
   weatherState: string;
 };
 
@@ -51,6 +68,7 @@ const DAY_NAMES = [
 
 const SingleDay: React.FC<Props> = ({
   weatherState,
+  className,
   minTemp,
   maxTemp,
   date,
@@ -58,7 +76,7 @@ const SingleDay: React.FC<Props> = ({
   const dayOfWeek = DAY_NAMES[new Date(date).getDay()];
 
   return (
-    <Wrapper>
+    <Row className={className}>
       <Dates>
         <p>{dayOfWeek}</p>
         <p>{date}</p>
@@ -67,15 +85,18 @@ const SingleDay: React.FC<Props> = ({
         <span>
           {`${maxTemp}\u00b0`}/{`${minTemp}\u00b0`}
         </span>
-        <img
+        <Image
           alt="icon"
-          width="30px"
-          height="30px"
           src={`https://www.metaweather.com/static/img/weather/${weatherState}.svg`}
         />
       </Weather>
-    </Wrapper>
+    </Row>
   );
 };
 
-export default SingleDay;
+const ColoredSingleDay = styled(SingleDay)`
+  background-color: ${p =>
+    p.theme.weatherColors[p.weatherState] || p.theme.weatherColors.lc};
+`;
+
+export default ColoredSingleDay;

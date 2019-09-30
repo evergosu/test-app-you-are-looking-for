@@ -37,7 +37,7 @@ const Weather: React.FC = () => {
         <Spinner isLoading={isLoading}>
           <Switch>
             <Route path="/today">
-              {cityId && <Today cityName={cityName} cityId={cityId} />}
+              {cityId && <Today cityId={cityId} cityName={cityName} />}
             </Route>
             <Route path="/week">{cityId && <Week cityId={cityId} />}</Route>
             <Redirect to="/today" />

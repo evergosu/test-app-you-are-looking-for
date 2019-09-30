@@ -1,6 +1,6 @@
 {
   "name": "test-app-you-are-looking-for",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "just another test app",
   "main": ".dist/index.html",
   "source": "src/index.html",
