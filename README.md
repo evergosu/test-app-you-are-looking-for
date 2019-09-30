@@ -1,4 +1,4 @@
-# Default template
+# Simple weather app
 
 1. React
 1. Parcel
