@@ -6,7 +6,7 @@
   "source": "src/index.html",
   "scripts": {
     "start": "npx parcel serve %npm_package_source% -d ./.dist --open",
-    "build": "npx parcel build %npm_package_source% -d ./.dist",
+    "build": "npx parcel build $npm_package_source -d ./.dist",
     "ts": "tsc --noEmit",
     "ts:w": "npm run ts -- --watch",
     "test": "jest --passWithNoTests",
